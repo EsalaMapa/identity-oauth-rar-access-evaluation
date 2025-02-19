@@ -1,0 +1,1 @@
+# identity-authz-spicedb-rarauthzdataprocessor
