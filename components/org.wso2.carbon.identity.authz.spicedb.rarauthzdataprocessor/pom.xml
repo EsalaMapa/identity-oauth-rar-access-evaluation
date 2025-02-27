@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.wso2.carbon.identity.authz.spicedb.rarauthzdataprocessor</groupId>
         <artifactId>identity-authz-spicedb-rarauthzdataprocessor</artifactId>
-        <version>1.0</version>
+        <version>1.0.0</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
     <packaging>bundle</packaging>
@@ -37,11 +37,10 @@
                             org.osgi.service.component;version="${org.osgi.service.component.version.range}",
                             org.wso2.carbon.identity.inbound.auth.oauth2.*;version="${org.wso2.carbon.identity.inbound.auth.oauth2.version.range}",
                             org.wso2.carbon.identity.inbound.auth.oauth2.fga.*;version="${org.wso2.carbon.identity.inbound.auth.oauth2.version.range}",
-                            org.wso2.carbon.identity.authz.spicedb.*;version="1.0",
                         </Import-Package>
                         <Export-Package>
                             !org.wso2.carbon.identity.authz.spicedb.rarauthzdataprocessor.internal,
-                            org.wso2.carbon.identity.authz.spicedb.rarauthzdataprocessor.*; version="${identity.app.authz.spicedb.scopevalidator.pkg.exp.version}",
+                            org.wso2.carbon.identity.authz.spicedb.rarauthzdataprocessor.*; version="${identity.app.authz.spicedb.rarauthzdataprocessor.pkg.exp.version}",
                         </Export-Package>
                         <DynamicImport-Package>*</DynamicImport-Package>
                     </instructions>
