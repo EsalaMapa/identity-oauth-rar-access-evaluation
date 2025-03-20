@@ -16,7 +16,7 @@
  * under the License.
  */
 
-package org.wso2.carbon.identity.authz.spicedb.rarauthzdataprocessor.internal;
+package org.wso2.carbon.identity.access.control.rarauthzdataprocessor.internal;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -25,19 +25,19 @@ import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
-import org.wso2.carbon.identity.authz.spicedb.rarauthzdataprocessor.SpicedbAuthzDetailsProcessor;
+import org.wso2.carbon.identity.access.control.rarauthzdataprocessor.AccessEvaluationDetailsProcessor;
 import org.wso2.carbon.identity.oauth2.rar.core.AuthorizationDetailsProcessor;
 
 /**
- * Service component to register the RAR authorization details processor for spiceDB.
+ * Service component to register the RAR authorization details processor for Access Evaluation.
  */
 @Component(
-        name = "identity.authz.spicedb.authzdataprocessor.component",
+        name = "identity.access.control.authzdataprocessor.component",
         immediate = true
 )
-public class SpicedbAuthzDetailsProcessorServiceComponent {
+public class AccessControlAuthzDetailsProcessorServiceComponent {
 
-    private static final Log LOG = LogFactory.getLog(SpicedbAuthzDetailsProcessorServiceComponent.class);
+    private static final Log LOG = LogFactory.getLog(AccessControlAuthzDetailsProcessorServiceComponent.class);
 
     /**
      * Method to activate the component.
@@ -48,12 +48,13 @@ public class SpicedbAuthzDetailsProcessorServiceComponent {
     protected void activate (ComponentContext context) {
 
         try {
-            SpicedbAuthzDetailsProcessor spicedbAuthzDetailsProcessor = new SpicedbAuthzDetailsProcessor();
+            AccessEvaluationDetailsProcessor accessEvaluationDetailsProcessor = new AccessEvaluationDetailsProcessor();
             BundleContext bundleContext = context.getBundleContext();
-            bundleContext.registerService(AuthorizationDetailsProcessor.class, spicedbAuthzDetailsProcessor, null);
-            LOG.debug("RAR authorization details processor for spiceDB bundle is activated");
+            bundleContext.registerService(AuthorizationDetailsProcessor.class, accessEvaluationDetailsProcessor, null);
+            LOG.debug("RAR authorization details processor for Access Evaluation bundle is activated");
         } catch (Throwable throwable) {
-            LOG.error("Error while starting RAR authorization details processor for spiceDB component", throwable);
+            LOG.error("Error while starting RAR authorization details processor for Access Evaluation component",
+                    throwable);
         }
     }
 
@@ -65,7 +66,7 @@ public class SpicedbAuthzDetailsProcessorServiceComponent {
     @Deactivate
     protected void deactivate (ComponentContext context) {
 
-        LOG.debug("RAR authorization details processor for spiceDB bundle is deactivated.");
+        LOG.debug("RAR authorization details processor for Access Evaluation bundle is deactivated.");
     }
 }
 
